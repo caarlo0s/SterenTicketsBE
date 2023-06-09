@@ -20,7 +20,7 @@ namespace SterenTicketsBE.Persistence.Repositories
 
 			var dynamicParameters = new
 			{
-			    usaurio		= authRequest.usuario,
+			    usuario		= authRequest.usuario,
                 password	= authRequest.password,
              
 			};

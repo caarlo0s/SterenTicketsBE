@@ -11,26 +11,25 @@ namespace SterenTicketsBE.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class AuthController : ControllerBase
+    public class ErrorController : ControllerBase
     {
-        private readonly AuthInterface _authInterface;
+        private readonly ErrorInterface _errorInterface;
         private readonly JwtGenerateInterface _jwtGenerator;
 
-        public AuthController(AuthInterface authInterface,
+        public ErrorController(ErrorInterface errorInterface,
                               JwtGenerateInterface jwtGenerator
                             )
         {
-            _authInterface = authInterface;
+            _errorInterface = errorInterface;
             _jwtGenerator = jwtGenerator;
         }
         
-        [HttpPost("login")]
-        public async Task<Response<IEnumerable<AuthResponse>>> Login(AuthRequest authRequest)
+        [HttpGet("GetErrors")]
+        public async Task<Response<IEnumerable<ErrorResponse>>> GetErrors()
         {
-            Response<IEnumerable<AuthResponse>> result;
-            result = await _authInterface.Login(authRequest);
-            if (result.Error == 0 && result.Data.ToList().Count!=0)
-                result.Data.First().token = _jwtGenerator.CreateToken(result.Data.First().id_empleado, result.Data.First().usuario, result.Data.First().nombre);
+            Response<IEnumerable<ErrorResponse>> result;
+            result = await _errorInterface.GetError();
+
             return result;
         }
     }
