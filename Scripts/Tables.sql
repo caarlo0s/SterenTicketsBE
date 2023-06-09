@@ -65,3 +65,7 @@ ALTER TABLE Ticket ADD CONSTRAINT FK_ID_ERROR FOREIGN KEY (id_error) REFERENCES 
 GO
 ALTER TABLE Ticket ADD CONSTRAINT FK_ID_DEPARTAMENTO FOREIGN KEY (id_departamento) REFERENCES Departamento(id_departamento);
 GO
+
+INSERT INTO Empleado
+	(nombre,email,password,telefono,usuario )
+values('Carlos Vazquez Ricardez', 'rricardez@live.com.ar',  ENCRYPTBYPASSPHRASE('ZGVwZXBzYVNob3BpZnkyMDIzLg==', '123456'), '2712394873','cvr');

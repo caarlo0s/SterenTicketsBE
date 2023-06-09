@@ -25,7 +25,7 @@ namespace SterenTicketsBE.Persistence.Repositories
              
 			};
     
-            var resultado = ExecProc<AuthResponse>.EjecutaSinTran(_factoryConection, storedProcedure, dynamicParameters);
+            var resultado = ExecProc<AuthResponse>.EjecutaConTran(_factoryConection, storedProcedure, dynamicParameters);
             return resultado;
         }
     }
